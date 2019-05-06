@@ -26,6 +26,20 @@ connection.connect(function(err){
   console.log('Connected to database successfully');
 });
 
+setInterval(()=>{
+    connection.query("select 1",(err_check_test,results_test_check)=>{
+      if(err_check_test)
+      {
+        console.log("Error while running connection alive query");
+        return false;
+  
+      }
+      console.log("connection alive query");
+      return true;
+  
+    })
+  },10800000); 
+
 app.post("/getLocations1",(req,res)=>{
 
     console.log("from get locations");
